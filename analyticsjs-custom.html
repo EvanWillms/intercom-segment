@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script type="text/javascript">
+    // Create a queue, but don't obliterate an existing one!
+    window.analytics = window.analytics || [];
+
+    // A list of the methods in Analytics.js to stub.
+    window.analytics.methods = ['identify', 'group', 'track',
+    'page', 'pageview', 'alias', 'ready', 'on', 'once', 'off',
+    'trackLink', 'trackForm', 'trackClick', 'trackSubmit'];
+
+    // Define a factory to create stubs. These are placeholders
+    // for methods in Analytics.js so that you never have to wait
+    // for it to load to actually record data. The `method` is
+    // stored as the first argument, so we can replay the data.
+    window.analytics.factory = function(method){
+        return function(){
+          var args = Array.prototype.slice.call(arguments);
+          args.unshift(method);
+          window.analytics.push(args);
+          return window.analytics;
+        };
+    };
+
+    // For each of our methods, generate a queueing stub.
+    for (var i = 0; i < window.analytics.methods.length; i++) {
+        var key = window.analytics.methods[i];
+        window.analytics[key] = window.analytics.factory(key);
+    }
+
+    // Define a method to load Analytics.js
+        // and that will be sure to only ever load it once.
+    analytics.load = function(callback) {
+        if (document.getElementById('analytics-js')) return;
+
+        // We make a copy if our dummy object
+        window.a = window.analytics
+
+        // Create an async script element
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = 'analytics-js';
+        script.async = true;
+        script.src = 'analytics-2.3.23.js';
+
+        script.addEventListener('load', function(e) {
+            if (typeof callback === 'function') {
+              callback(e);
+            }
+          }, false);
+        // Insert our script next to the first script element.
+        var first = document.getElementsByTagName('script')[0];
+        first.parentNode.insertBefore(script, first);
+    };
+
+    analytics.load(function() {
+      // On load init our integrations
+      analytics.initialize({
+            'Intercom' : {
+                appId : 'fc36c6a06a1c8baa5378bfb2cf08cb28e45d8776',
+                widget: {
+                    "activator": "#Intercom"
+                },
+            }
+      });
+
+      // Now copy whatever we applied to our dummy object to the real analytics
+      while (window.a.length > 0) {
+        var item = window.a.shift();
+        var method = item.shift();
+        if (analytics[method]) analytics[method].apply(analytics, item);
+      }
+    });
+
+    window.analytics.identify(
+    'segment.custom@example.com', {
+            name: 'TEST - AnalyticsJS Custom',
+            email: 'analyticsjs.custom@example.com'
+        }, {
+            Intercom : {
+                "user_hash": 'f589e5f340568b1027e773a77fb7a1d65f419508933d93d882dbc5647017968f'
+            }
+        }
+    );
+
+    // Make the first page call to load the integrations. If
+    // you'd like to manually name or tag the page, edit or
+    // move this call however you'd like.
+    window.analytics.page();
+</script>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="intercom-default.html">Intercom Default</a></li>
+            <li><a href="intercom-custom.html">Intercom Custom</a></li>
+            <br/>
+            <li><a href="segment-default.html">Segment Default</a></li>
+            <li><a href="segment-custom.html">Segment Custom</a></li>
+            <br/>
+            <li><a href="analyticsjs-default.html">AnalyticsJS Default</a></li>
+            <li class="active"><a href="analyticsjs-custom.html">AnalyticsJS Custom</a></li>
+        </ul>
+        <h3 class="text-muted">Intercom Tests</h3>
+    </div>
+
+    <div class="jumbotron">
+        <h1>AnalyticsJS Custom</h1>
+
+        <p class="lead">This is a Segment.io open source library, <a href="https://github.com/segmentio/analytics.js">analytics.js</a>,
+            install.</p>
+
+        <p><a id="Intercom" class="btn btn-lg btn-success" href="#" role="button">Push for Intercom chat</a></p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Evan Willms 2014</p>
+    </div>
+
+</div>
+<!-- /container -->
+
+</body>
+</html>
