@@ -25,7 +25,7 @@
         window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
         window.analytics.load("1t3s04pmqb");
         window.analytics.identify('segment.default@example.com', {
-            name: 'Segment Default',
+            name: 'TEST - Segment Default',
             email: 'segment.default@example.com',
             "user_hash": 'c0735a0711387d7bbc6dfd519e9d00f51aaf63ffa5fd79ea9acfac013af122c4'
         });
@@ -44,6 +44,9 @@
             <br/>
             <li class="active"><a href="segment-default.html">Segment Default</a></li>
             <li><a href="segment-custom.html">Segment Custom</a></li>
+            <br/>
+            <li><a href="analyticsjs-default.html">AnalyticsJS Default</a></li>
+            <li><a href="analyticsjs-custom.html">AnalyticsJS Custom</a></li>
         </ul>
         <h3 class="text-muted">Intercom Tests</h3>
     </div>
